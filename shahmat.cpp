@@ -23,23 +23,23 @@ int main()
 	
 	if (x1 == x2 and y1 == y2)
 	{
-		cout << "Input Error" << endl;
+		cout << "Input Error. Knights are in the same point" << endl;
+		return -1;
 	}
-	else if (x1 <= 0 or x2 <= 0 or y1 <= 0 or y2 <=0 or x1 > 8 or x2 > 8 or y1 > 8 or y2 > 8)
+	if (x1 <= 0 or x2 <= 0 or y1 <= 0 or y2 <=0 or x1 > 8 or x2 > 8 or y1 > 8 or y2 > 8)
 	{
-		cout << "Input Error" << endl;
+		cout << "Input Error. There are no such cells on the chessboard" << endl;
+		return -2;
 	}
-	else
-	{
-		fx = abs(x1 - x2);
-		fy = abs(y1 - y2);
 	
-		if (fx == 2 and fy == 1 or fx == 1 and fy == 2)
-			cout << "Horses hit each other";
-		else 
-			cout << "Horses do not attack each other";	
-	}
-		
+	fx = abs(x1 - x2);
+	fy = abs(y1 - y2);
+
+	if ((fx == 2 and fy == 1) or (fx == 1 and fy == 2))
+		cout << "Horses hit each other";
+	else 
+		cout << "Horses do not attack each other";	
+	
 	return 0;
 }
 
