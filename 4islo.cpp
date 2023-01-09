@@ -7,31 +7,24 @@ int main()
 	int date = 0;
 	int month = 0;
 	int year = 0;
+	int number = 0;
 	int sum = 0;
-	int n = 4;
-	int i = 0;
-	int j = 0;
-	int k = 0;
-	int w = 0;
-	int l = 0;
-	int m = 0;
-	int b = 0;
 	
-	cout << "Enter your date of birth: ";
+	cout << "Enter your birth number [1..31]:";
 	cin >> date;
 	if (date <= 0 or date > 31)
 	{	
 		cout << "Error! There is no such number in the month.";
 		return -1;
 	}
-	cout << "Enter your month of birth: ";
+	cout << "Enter your month of birth [1..12]:";
 	cin >> month;
 	if (month <= 0 or month > 12)
 	{	
 		cout << "Error! There is no such month.";
 		return -2;
 	}
-	cout << "Enter your year of birth: ";
+	cout << "Enter your year of birth [1900..2023]:";
 	cin >> year;
 	if (year <= 0)
 	{	
@@ -39,29 +32,48 @@ int main()
 		return -3;
 	}
 	
-	i = date % 10;
-	date = date / 10;	
+	int finaldate = date + month * 100 + year * 1000;
 	
-	j = month % 10;
-	month = month / 10;	
-	
-	for (n = 4; n > 0; n--)
+	do
 	{
-		k = year % 10;
-		w = w + k;
-		year = year / 10;	
-	}
-
-	sum = w + month + j + i + date;
-
-	l = sum % 10;
-	sum = sum / 10;	
-	b = sum + l;
-	
-	m = b % 10;
-	b = b / 10;	
-	cout << "Number of your destiny: " << b + m << endl;
+		sum = 0;
+		while (finaldate > 0)
+		{
+			number = finaldate % 10;
+			finaldate = finaldate / 10;
+			sum = sum + number;
+		}
+	 	finaldate = sum;
+	} while (sum > 9);
+			
+	cout << "Number of your destiny: " << sum << endl;
 	
 	return 0;
 }
 
+
+
+
+/*
+	date1 = date % 10;
+	date = date / 10;	
+	
+	month1 = month % 10;
+	month1 = month / 10;	
+	
+	for (i = 4; i > 0; i--)
+	{
+		year1 = year % 10;
+		sumyear = sumyear + year1;
+		year = year / 10;	
+	}
+
+	sum = sumyear + month + month1 + date1 + date;
+
+	semifinalnumber = sum % 10;
+	sum = sum / 10;	
+	finalnumber2 = sum + semifinalnumber;
+	
+	finalnumber = finalnumber2 % 10;
+	finalnumber2 = finalnumber2 / 10;
+	*/
